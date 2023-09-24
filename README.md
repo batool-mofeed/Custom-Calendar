@@ -11,9 +11,9 @@ Custom calendar is a simple Android app that allows users to view a monthly cale
 
 ## Screenshot
 
-<img src="/Screenshot_ccom.batool.calendartest.jpg" width="400" height="400" alt="Screenshot 1">  <img src="/imageedit_3_3539501826.jpg"  width="400" height="650" alt="Screenshot 1">
+<img src="/Screenshot_ccom.batool.calendartest.jpg" width="400" height="400" alt="Screenshot 1"> 
 
-
+ <img src="/imageedit_3_3539501826.jpg"  width="400" height="700" alt="Screenshot 1">
 
 
 
