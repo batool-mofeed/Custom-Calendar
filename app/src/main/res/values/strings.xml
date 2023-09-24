@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CalendarTest</string>
+
+    <string name="sunday">S</string>
+    <string name="monday">M</string>
+    <string name="tuesday">T</string>
+    <string name="wednesday">W</string>
+    <string name="thursday">TH</string>
+    <string name="friday">F</string>
+    <string name="saturday">SA</string>
+
+</resources>
