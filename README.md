@@ -11,7 +11,7 @@ CalendarTest is a simple Android app that allows users to view a monthly calenda
 
 ## Screenshots
 
-<img src="/Screenshot_om.batool.calendartest.jpg" width="50" height="50" alt="Screenshot 1">
+<img src="/Screenshot_om.batool.calendartest.jpg" width="250" height="250" alt="Screenshot 1">
 
 
 
