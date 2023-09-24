@@ -1,6 +1,6 @@
 # Custom Calendar Android App
 
-CalendarTest is a simple Android app that allows users to view a monthly calendar with the ability to mark certain days as holidays. It uses the Android Data Binding library and RecyclerView to create a dynamic and interactive calendar view.
+Custom calendar is a simple Android app that allows users to view a monthly calendar with the ability to mark certain days as holidays. It uses the Android Data Binding library and RecyclerView to create a dynamic and interactive calendar view.
 
 ## Features
 
