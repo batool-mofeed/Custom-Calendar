@@ -7,7 +7,8 @@ import java.time.LocalDate
  **/
 data class CalendarItem(
     var day: String = "",
-    var localDate: LocalDate,
+    var localDate: String,
     var holiday: Boolean = false,
-    var today: Boolean = false
+    var today: Boolean = false,
+    var events: List<String> = emptyList()
 )

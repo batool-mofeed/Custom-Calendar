@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     var calendarItems = ArrayList<CalendarItem>()
     private lateinit var selectedDate: LocalDate
     lateinit var todayDate: LocalDate
-    var offDays: ArrayList<String> = ArrayList()
+    var offDays: ArrayList<Event> = ArrayList()
 
     lateinit var dataBinding: ActivityMainBinding
 
@@ -38,11 +38,21 @@ class MainActivity : AppCompatActivity() {
          **You can call an API to get the days (holidays)
          ** or whatever marked days you want
          */
-        offDays.add("5")
-        offDays.add("11")
-        offDays.add("23")
-        offDays.add("27")
-        offDays.add("26")
+        offDays.add(
+            Event(
+                todayDate.plusDays(5).toString(),
+                listOf("Dublin Tech Summit", "Black Hat USA")
+            )
+        )
+        offDays.add(Event(todayDate.minusDays(1).toString(), listOf("Mobile World Congress")))
+        offDays.add(Event(todayDate.plusDays(2).toString(), listOf("Viva Technology")))
+        offDays.add(Event(todayDate.plusDays(16).toString(), listOf("AI & Big Data Expo")))
+        offDays.add(
+            Event(
+                todayDate.minusDays(10).toString(),
+                listOf("Web Summit", "Future Sustainability Summit")
+            )
+        )
 
         /**Set the month view after defining (selected date, today date, offdays)*/
         setMonthView()
@@ -65,27 +75,62 @@ class MainActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setMonthView() {
-        dataBinding.monthTitle.text = monthYearFromDate(selectedDate)
+        // Set the month title
+        val monthTitleText = formattedDateFromDate(selectedDate, "MMMM yyyy")
+        dataBinding.monthTitle.text = monthTitleText
+
+        // Get the days in the selected month
         val daysInMonth = daysInMonthArray(selectedDate)
 
+        // Clear the calendar items
         calendarItems.clear()
 
         for (item in daysInMonth) {
+            // Check if the current day is today
             val isToday = item == todayDate.dayOfMonth.toString()
                     && todayDate.monthValue == selectedDate.monthValue
                     && todayDate.year == selectedDate.year
-            val isDayOff = offDays.contains(item)
 
-            val calendarItem = CalendarItem(item, selectedDate, isDayOff, isToday)
+            // Check if the current day is a day off
+            val isDayOff = offDays.any { LocalDate.parse(it.date).dayOfMonth.toString() == item }
+
+            // Find the event day if it's a day off
+            val foundEventDay = if (isDayOff) offDays.find { LocalDate.parse(it.date).dayOfMonth.toString() == item } else null
+
+            // Check if the day off belongs to the selected month
+            val isDayOffInSelectedMonth = isDayOff && selectedDate.monthValue == LocalDate.parse(foundEventDay?.date).monthValue
+
+            // Create a CalendarItem
+            val calendarItem = CalendarItem(
+                item,
+                if (isDayOffInSelectedMonth) foundEventDay!!.date else selectedDate.toString(),
+                isDayOffInSelectedMonth,
+                isToday,
+                if (isDayOffInSelectedMonth) foundEventDay!!.events else emptyList()
+            )
             calendarItems.add(calendarItem)
         }
 
+        // Set up the RecyclerView
         dataBinding.calendarRecycler.apply {
             layoutManager = GridLayoutManager(this@MainActivity, 7)
             adapter = CalendarAdapter {
-                //Click on view
+                // Click on view
+                initEventsAdapter(it)
             }.apply {
                 addItems(calendarItems)
+            }
+        }
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun initEventsAdapter(it: CalendarItem) {
+        dataBinding.eventDate.text =
+            formattedDateFromDate(LocalDate.parse(it.localDate), "dd-MM-yyyy")
+        dataBinding.eventsRecycler.apply {
+            adapter = EventAdapter().apply {
+                addItems(it.events)
             }
         }
     }
@@ -117,8 +162,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun monthYearFromDate(date: LocalDate): String? {
-        val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("MMMM yyyy")
+    private fun formattedDateFromDate(date: LocalDate, pattern: String): String? {
+        val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern(pattern)
         return date.format(formatter)
     }
+
+
 }
