@@ -9,7 +9,7 @@ CalendarTest is a simple Android app that allows users to view a monthly calenda
 - Mark specific days as holidays.
 - Customize the appearance of holidays.
 
-## Screenshots
+## Screenshot
 
 <img src="/Screenshot_ccom.batool.calendartest.jpg" width="250" height="250" alt="Screenshot 1">
 
