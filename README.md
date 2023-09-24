@@ -39,7 +39,7 @@ The `CalendarAdapter` is responsible for populating the RecyclerView with calend
 
 ### Layouts
 
-The XML layout files (`activity_main.xml`, `item_calendar.xml`, and `month_header.xml`) define the UI components used in the app. You can customize these layouts to match your design requirements.
+The XML layout files (`activity_main.xml` and `item_calendar.xml`) define the UI components used in the app. You can customize these layouts to match your design requirements.
 
 ### Data Binding
 
