@@ -1,13 +1,13 @@
 # Custom Calendar Android App
 
-Custom calendar is a simple Android app that allows users to view a monthly calendar with the ability to mark certain days as holidays. It uses the Android Data Binding library and RecyclerView to create a dynamic and interactive calendar view.
+Custom calendar is a simple Android app that allows users to view a monthly calendar with the ability to mark certain days as upcoming events, meetings, conferences, and holidays. It uses the Android Data Binding library and RecyclerView to create a dynamic and interactive calendar view.
 
 ## Features
 
 - Display a monthly calendar with days of the week.
 - Navigate between months.
-- Mark specific days as holidays.
-- Customize the appearance of holidays.
+- Mark specific days as needed.
+- Customize the appearance of the events.
 
 ## Screenshot
 
@@ -31,7 +31,7 @@ Custom Calendar is designed as a sample project, but you can use its components 
 
 ### `MainActivity`
 
-This is the main activity that hosts the calendar. It initializes the calendar view, handles navigation between months, and defines off-days (holidays) for demonstration purposes.
+This is the main activity that holds the calendar. It initializes the calendar view, handles navigation between months, and defines off-days (holidays) for demonstration purposes.
 
 ### `CalendarAdapter`
 
@@ -61,7 +61,7 @@ Custom Calendar is open-source software released under the MIT License. See the 
 
 ## Contact
 
-If you have any questions or suggestions, feel free to [contact the project maintainer](mailto:batoolalshwiki4555@gmail.com).
+If you have any questions or suggestions, feel free to <a href ="mailto:batoolalshwiki4555@gmail.com">contact the project owner (batoolalshwiki4555@gmail.com)</a>.
 
 Enjoy using Custom Calendar!
 
